@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <br>
+    <h1 style="color:gray; text-align: center;">--상세페이지 입니다.--</h1>
+    <h2 style="color: navy;text-align: center;">{{blog.title}}</h2>
+    <p style="text-align: center;">{{blog.pub_date}}</p>
+    <p style="text-align: center;">{{blog.body}}</p>
+
+    <table style="width:60px; margin:auto;">
+    <tr>
+    <td>
+    <form action="{% url 'edit' blog.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="수정하기">
+    </form>
+    </td>
+    <td>
+    <form action="{%url 'delete' blog.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="삭제하기">
+    </form>
+    </td>
+    </tr>
+    </table>
+    <br>
+    <p  style="text-align: center;"><a href="{% url 'home' %}">돌아가기</a></p>
+</div>
+
+{% endblock %}
